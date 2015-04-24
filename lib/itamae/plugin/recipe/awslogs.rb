@@ -4,7 +4,6 @@ module Itamae
   module Plugin
     module Recipe
       module Awslogs
-        # Your code goes here...
       end
     end
   end
