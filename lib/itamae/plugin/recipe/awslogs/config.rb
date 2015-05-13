@@ -1,33 +1,23 @@
 # Configure awslogs
+require 'pathname'
+require Pathname.new(__FILE__).join('../../awslogs.rb')
 
-if node[:awslogs][:config][:logs]
-  logs = node[:awslogs][:config][:logs]
+node.reverse_merge!(
+  awslogs: {
+    config: {
+      cli: {
+        region: 'us-east-1',
+        aws_access_key_id: nil,
+        aws_secret_access_key: nil
+      }
+    }
+  }
+)
 
-  if logs[:template]
-    vars = (logs[:variables] || {})
-
-    template '/etc/awslogs/awslogs.conf' do
-      source logs[:template]
-      owner 'root'
-      group 'root'
-      mode '644'
-      variables vars
-    end
-  end
-end
-
-if node[:awslogs][:config][:cli]
-  cli = node[:awslogs][:config][:cli]
-
-  if cli[:template]
-    vars = (cli[:variables] || {})
-
-    template '/etc/awslogs/awscli.conf' do
-      source cli[:template]
-      owner 'root'
-      group 'root'
-      mode '600'
-      variables vars
-    end
-  end
+template '/etc/awslogs/awscli.conf' do
+  source Itamae::Plugin::Recipe::Awslogs.template_path('awscli.conf.erb')
+  owner 'root'
+  group 'root'
+  mode '600'
+  variables node[:awslogs][:config][:cli]
 end

@@ -53,19 +53,21 @@ example for node.yaml
 ```
 awslogs:
   config:
-    logs:
-      template: '/path/to/your/awslogs.conf'
-      variables:
-        key1: value1
     cli:
-      template: '/path/to/your/awscli.conf'
-      variables:
-        aws_access_key_id: 'my_access_key_id'
-        aws_secret_access_key: 'my_secret_key'
-        region: 'us-east-1'
+      aws_access_key_id: 'my_access_key_id'
+      aws_secret_access_key: 'my_secret_key'
+      region: 'us-east-1'
 ```
 
-WARNING: **you must use **Absolute Path** for all of template keys.**
+Currently, this gem does not support to configure `/etc/awslogs/awslogs.conf` yet.
+
+See [CloudWatch Logs Agent Reference](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/AgentReference.html) about `/etc/awslogs/awslogs.conf`.
+
+| name | required | description |
+|:-----|:--------:|:------------|
+| awslogs.config.cli.aws_access_key_id | optional | aws access_key_id (see [AWS document](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/QuickStartEC2Instance.html)) |
+| awslogs.config.cli.aws_secret_access_key | optional | aws secret_access_key |
+| awslogs.config.cli.region | required | region for CloudWatch Logs agent. |
 
 #### enable recipe
 
