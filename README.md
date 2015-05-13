@@ -28,13 +28,25 @@ Or install it yourself as:
 
 ### Recipe
 
-#### your recipe example
+#### package recipe
+
+Only install awslogs package.
 
 ```
+# your recipe
 include_recipe 'awslogs::package'
 ```
 
-### Node
+#### config recipe
+
+Generate config files for awslogs.
+
+```
+# your recipe
+include_recipe 'awslogs::config'
+```
+
+##### Node
 
 example for node.yaml
 
@@ -53,9 +65,16 @@ awslogs:
         region: 'us-east-1'
 ```
 
-#### NOTE
+WARNING: **you must use **Absolute Path** for all of template keys.**
 
-- You must use **Absolute Path** for all of template keys.
+#### enable recipe
+
+Enable awslogs service.
+
+```
+# your recipe
+include_recipe 'awslogs::enable'
+```
 
 ## Contributing
 
@@ -64,3 +83,9 @@ awslogs:
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+## License
+
+Copyright 2015 Leonis & Co.
+
+MIT License
