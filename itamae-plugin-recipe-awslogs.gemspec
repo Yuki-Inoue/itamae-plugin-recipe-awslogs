@@ -8,10 +8,11 @@ Gem::Specification.new do |spec|
   spec.version       = Itamae::Plugin::Recipe::Awslogs::VERSION
   spec.authors       = ['Daisuke Hirakiuchi']
   spec.email         = ['devops@leonisand.co']
+  spec.licenses      = ['MIT']
 
   spec.summary       = 'Plugin to support AWS CloudWatch Logs for Itamae'
-  spec.description   = 'Plugin to support AWS CloudWatch Logs for Itamae'
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.description   = 'Plugin to support AWS CloudWatch Logs for Itamae. (Currently, this plugin supports only Amazon Linux.)'
+  spec.homepage      = 'https://github.com/leonis/itamae-plugin-recipe-awslogs'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.require_paths = ['lib']
